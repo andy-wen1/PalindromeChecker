@@ -17,13 +17,41 @@ public void setup()
 public boolean palindrome(String word)
 {
   //your code here
-  return false;
+  word = noCapitals(word);
+  word = noSpaces(word);
+  word = onlyLetters(word);
+  for(int i = 0;i<word.length();i++){
+    if(word.charAt(i)!=word.charAt(word.length()-1-i)) return false;
+  }
+  return true;
 }
+//I implemented palindrome without using reverse on codingbat
 public String reverse(String str)
 {
-    String sNew = new String();
-    //your code here
-    return sNew;
+  String ret = "";
+  for(int i = str.length()-1;i>=0;i--){
+    ret+=str.charAt(i);
+  }
+  return ret;
 }
-
-
+public String noCapitals(String sWord){
+  String ret = "";
+  for(int i = 0;i<sWord.length();i++){
+    ret+=Character.toString(sWord.charAt(i)).toLowerCase();
+  }
+  return ret;
+}
+public String noSpaces(String sWord){
+  String ret = "";
+  for(int i = 0;i<sWord.length();i++){
+    if(sWord.charAt(i)!=' ') ret+=sWord.charAt(i);
+  }
+  return ret;
+}
+public String onlyLetters(String sString){
+  String ret = "";
+  for(int i = 0;i<sString.length();i++){
+    if(Character.isLetter(sString.charAt(i))) ret+=sString.charAt(i);
+  }
+  return ret;
+}
